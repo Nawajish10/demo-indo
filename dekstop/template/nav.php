@@ -169,40 +169,10 @@
                 </div>
 
               </div>
-              <div class="nav-item">
-                <a class="nav-link" href="?page=lottery" style="cursor: pointer;">
-                  Lottery
-                  <i class="fas fa-caret-down"></i>
-                </a>
-                <div class="nav-item__game">
-                  <div class="container text-center justify-content-center">
-                    <div class="game-item ">
-                      <a onclick="gameAlert()" href="javascript:;">
-                        <img title="4D" alt="4D" src="https://images.linkcdn.cloud/global/navbar/lottery/togel.webp">
-                        <div class="game-name">4D</div>
-
-                      </a>
-                    </div>
-                  </div>
-                </div>
+              
 
               </div>
-              <div class="nav-item">
-                <a class="nav-link" href="?page=poker" style="cursor: pointer;">
-                  Poker
-                  <i class="fas fa-caret-down"></i>
-                </a>
-                <div class="nav-item__game">
-                  <div class="container text-center justify-content-center">
-                    <div class="game-item ">
-                      <a href="?page=poker_amatic">
-                        <img title="AMATIC" alt="AMATIC" src="https://www.amatic.com/img/amatic_online_logo.png" width="150px">
-                        <div class="game-name">AMATIC</div>
-
-                      </a>
-                    </div>
-                  </div>
-                </div>
+              
 
               </div>
               <div class="nav-item">
@@ -225,14 +195,8 @@
                 </div>
 
               </div>
-              <div class="nav-item">
-                <a class="nav-link" href="?page=promosi">
-                  Promotions
-                </a>
-              </div>
-              <div class="nav-item">
-                <a class="nav-link" href="#">Event</a>
-              </div>
+              
+              
             </div>
           </div>
         </div>
@@ -408,40 +372,10 @@
                 </div>
 
               </div>
-              <div class="nav-item">
-                <a class="nav-link" href="?page=lottery" style="cursor: pointer;">
-                  Lottery
-                  <i class="fas fa-caret-down"></i>
-                </a>
-                <div class="nav-item__game">
-                  <div class="container text-center justify-content-center">
-                    <div class="game-item ">
-                      <a onclick="gamemaintenance()" href="javascript:;">
-                        <img title="4D" alt="4D" src="https://images.linkcdn.cloud/global/navbar/lottery/togel.webp">
-                        <div class="game-name">4D</div>
-
-                      </a>
-                    </div>
-                  </div>
-                </div>
+              
 
               </div>
-              <div class="nav-item">
-                <a class="nav-link" href="?page=poker" style="cursor: pointer;">
-                  Poker
-                  <i class="fas fa-caret-down"></i>
-                </a>
-                <div class="nav-item__game">
-                  <div class="container text-center justify-content-center">
-                    <div class="game-item ">
-                      <a href="?page=poker_amatic">
-                        <img title="AMATIC" alt="AMATIC" src="https://www.amatic.com/img/amatic_online_logo.png" width="150px">
-                        <div class="game-name">AMATIC</div>
-
-                      </a>
-                    </div>
-                  </div>
-                </div>
+              
 
               </div>
               <div class="nav-item">
@@ -465,14 +399,8 @@
                 </div>
 
               </div>
-              <div class="nav-item">
-                <a class="nav-link" href="?page=promosi">
-                  Promotions
-                </a>
-              </div>
-              <div class="nav-item">
-                <a class="nav-link" href="#">Event</a>
-              </div>
+              
+              
             </div>
           </div>
         </div>

@@ -124,7 +124,7 @@ if ($punya_user['status'] == "Suspend") {
           <div class="col-lg-3 d-flex align-items-center">
             <div class="header-logo">
               <a href="?page=home">
-                <img alt="WebsiteLogo" src="../assets/img/<?php echo $logo ?>" width="250" height="54">
+                <h1 style="color: #fff; font-weight: 900; font-style: italic; font-size: 36px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); letter-spacing: 2px; font-family: 'Arial Black', sans-serif;">CASHINO</h1>
               </a>
             </div>
           </div>
@@ -158,7 +158,7 @@ if ($punya_user['status'] == "Suspend") {
     <div class="header-mobile__top">
       <div class="mobile-logo">
         <a href="?page=home">
-          <img src="../assets/img/<?php echo $logo ?>" alt="WebsiteLogo" width="125" height="27">
+          <h2 style="color: #fff; font-weight: 900; font-style: italic; font-size: 24px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); letter-spacing: 1px; font-family: 'Arial Black', sans-serif;">CASHINO</h2>
         </a>
       </div>
       <div class="mobile-button">

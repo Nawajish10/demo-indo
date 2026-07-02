@@ -5,8 +5,7 @@
         </div>
         <div class="sidenav__header-user-logo">
             <center>
-                <img src="../assets/img/<?php echo $logo ?>"
-                alt="WebsiteLogo" width="180">
+                <h2 style="color: #fff; font-weight: 900; font-style: italic; font-size: 24px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); letter-spacing: 1px; font-family: 'Arial Black', sans-serif;">CASHINO</h2>
             </center>
         </div>
         <?php

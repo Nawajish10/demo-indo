@@ -2,7 +2,9 @@
     "name": "nawajish10/demo-indo",
     "description": "Indonesian Online Slot Gaming Platform",
     "type": "project",
-    "require": {},
+    "require": {
+        "ext-mysqli": "*"
+    },
     "config": {
         "platform": {
             "php": "8.3"

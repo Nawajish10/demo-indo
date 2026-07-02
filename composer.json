@@ -1,10 +1,12 @@
 {
-    "name": "demo-indo",
+    "name": "nawajish10/demo-indo",
     "description": "Indonesian Online Slot Gaming Platform",
-    "require": {
-        "php": "8.3"
-    },
-    "scripts": {
-        "start": "heroku-php-apache2 ."
+    "type": "project",
+    "require": {},
+    "config": {
+        "platform": {
+            "php": "8.3"
+        },
+        "optimize-autoloader": true
     }
 }

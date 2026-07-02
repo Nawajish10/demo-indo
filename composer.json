@@ -2,7 +2,7 @@
     "name": "demo-indo",
     "description": "Indonesian Online Slot Gaming Platform",
     "require": {
-        "php": "7.4"
+        "php": "8.3"
     },
     "scripts": {
         "start": "heroku-php-apache2 ."

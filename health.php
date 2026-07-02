@@ -8,6 +8,9 @@ echo "=== Railway Health Check ===\n\n";
 echo "PHP Version: " . PHP_VERSION . "\n";
 echo "Server: " . php_uname() . "\n\n";
 
+echo "mysqli extension loaded: " . (extension_loaded('mysqli') ? "YES" : "NO") . "\n";
+echo "pdo_mysql extension loaded: " . (extension_loaded('pdo_mysql') ? "YES" : "NO") . "\n\n";
+
 // Environment Variables
 echo "=== DB Environment Variables ===\n";
 $vars = ['DB_HOST','DB_USER','DB_PASS','DB_NAME','MYSQLHOST','MYSQLUSER','MYSQLPASSWORD','MYSQLDATABASE','MYSQLPORT','APP_ENV'];
@@ -30,16 +33,20 @@ $port = getenv('MYSQLPORT') ?: 3306;
 
 echo "Connecting to: $host:$port / $name as $user\n";
 
-$conn = @new mysqli($host, $user, $pass, $name, (int)$port);
-if ($conn->connect_error) {
-    echo "FAILED: " . $conn->connect_error . "\n";
+if (extension_loaded('mysqli')) {
+    $conn = @new mysqli($host, $user, $pass, $name, (int)$port);
+    if ($conn->connect_error) {
+        echo "FAILED: " . $conn->connect_error . "\n";
+    } else {
+        echo "SUCCESS!\n";
+        $r = $conn->query("SHOW TABLES");
+        $tables = [];
+        while ($row = $r->fetch_row()) $tables[] = $row[0];
+        echo "Tables (" . count($tables) . "): " . implode(', ', $tables) . "\n";
+        $conn->close();
+    }
 } else {
-    echo "SUCCESS!\n";
-    $r = $conn->query("SHOW TABLES");
-    $tables = [];
-    while ($row = $r->fetch_row()) $tables[] = $row[0];
-    echo "Tables (" . count($tables) . "): " . implode(', ', $tables) . "\n";
-    $conn->close();
+    echo "FAILED: mysqli extension is missing!\n";
 }
 
 echo "\nDone.";

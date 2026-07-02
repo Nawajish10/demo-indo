@@ -11,8 +11,7 @@
                     $infouser = mysqli_fetch_array($getUser);
                     $extplayer = $infouser['extplayer'];
 
-                    $result = $TS->gameList('EVOPLAY');
-                    $games = json_decode($result, true);
+                    $games_query = mysqli_query($koneksi, "SELECT * FROM tb_gamelist WHERE provider = 'EVOPLAY'");
 
                     function generateRandomRTP()
                     {
@@ -25,10 +24,10 @@
                         return $randomRTP;
                     }
 
-                    foreach ($games['games'] as $data) {
+                    while ($data = mysqli_fetch_assoc($games_query)) {
                         $randomRTP = generateRandomRTP();
-                        $game_name = $data['game_name'];
-                        $images = $data['banner'];
+                        $game_name = $data['gamename'];
+                        $images = $data['image'];
                         $status_game = 'active';
 
                         if (isset($_SESSION['username'])) {
@@ -42,7 +41,7 @@
                                 if ($id_login == '') {
                                     $link_url = 'index.php?pesan=28';
                                 } else {
-                                    $link_url = $urlweb . '/main/API/playGame.php?extplayer='.$extplayer.'&gameCode='.$data['game_code'].'&provider='.'EVOPLAY';
+                                    $link_url = $urlweb . '/main/API/playGame.php?extplayer='.$extplayer.'&gameCode='.$data['gameid'].'&provider='.'EVOPLAY';
                                 }
 
                             }

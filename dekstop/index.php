@@ -684,7 +684,7 @@ if ($punya_user['status'] == "Suspend") {
     function tarikSaldo() {
       var username = '<?= $_SESSION["username"] ?>';
       $.ajax({
-        url: 'function/getBalances.php',
+        url: '../main/API/pullBalance.php',
         data: {
           username
         },

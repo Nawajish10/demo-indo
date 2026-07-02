@@ -1,0 +1,11 @@
+# Seamless API
+
+{% hint style="warning" %}
+Your site must implement this callback APIs. It is **required** for Seamless mode only.
+{% endhint %}
+
+The platform sends requests to your configured site endpoint (e.g. `https://your-backend.com/gold_api`).
+
+{% hint style="danger" %}
+When entering the Site Endpoint in profile page, ensure that it is an `https` domain and does not include `/gold_api` at the end, as `/gold_api` will be appended automatically when sending API requests.
+{% endhint %}

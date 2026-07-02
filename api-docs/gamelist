@@ -1,0 +1,73 @@
+# Game List
+
+## **Endpoint**
+
+```
+POST https://{API_SERVER}
+```
+
+## **Request Body**
+
+{% code fullWidth="false" %}
+
+```json
+{
+   "method": "game_list",
+   "agent_code": "testAgent",
+   "agent_token": "41f5cc794aef2b138c715cf25f767cc1",
+   "provider_code": "PRAGMATIC"
+}
+```
+
+{% endcode %}
+
+<table><thead><tr><th width="183">Key</th><th width="145">Type</th><th>Description</th></tr></thead><tbody><tr><td>method</td><td>string</td><td>The method type (<code>game_list</code>)</td></tr><tr><td>agent_code</td><td>string</td><td>The agent's code</td></tr><tr><td>agent_token</td><td>string</td><td>The agent's authentication token</td></tr><tr><td>provider_code</td><td>string</td><td>Provider code</td></tr></tbody></table>
+
+## **Success Response Example**
+
+```json
+{
+  "status": 1,
+  "msg": "SUCCESS",
+  "games": [
+    {
+      "game_code": "vs20doghouse",
+      "game_name": "The Dog House",
+      "banner": "https://.../vs20doghouse.png",
+      "status": 1
+    },
+    {
+      "game_code": "vs243mwarrior",
+      "game_name": "Monkey Warrior",
+      "banner": "https://.../vs243mwarrior.png",
+      "status": 0
+    }
+  ]
+}
+```
+
+| Key        | Type            | Description                    |
+| ---------- | --------------- | ------------------------------ |
+| status     | integer (32bit) | `1` – Success, `0` – Failure   |
+| msg        | string          | Response message               |
+| games      | array           | List of games                  |
+| game\_code | string          | Unique code for the game       |
+| game\_name | string          | Game name                      |
+| banner     | string          | URL of the game's banner image |
+| status     | integer (32bit) | `1` – Open, `0` – Maintenance  |
+
+***
+
+## **Failure Response Example**
+
+```json
+{
+  "status": 0,
+  "msg": "INTERNAL_ERROR"
+}
+```
+
+| Key    | Type            | Description   |
+| ------ | --------------- | ------------- |
+| status | integer (32bit) | `0` – Failure |
+| msg    | string          | Error message |

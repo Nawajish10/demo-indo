@@ -1,0 +1,39 @@
+# ========================
+# Secrets & Environment
+# ========================
+.env
+*.env
+
+# ========================
+# API config (contains credentials)
+# ========================
+/main/API/config.php
+/main/API/functions.php
+
+# ========================
+# Test / Debug files
+# ========================
+test_api.php
+test_conn.php
+
+# ========================
+# User-uploaded files
+# ========================
+/upload/bukti_transfer/*
+/uploads/*
+!/upload/bukti_transfer/.gitkeep
+!/uploads/.gitkeep
+
+# ========================
+# Logs
+# ========================
+*.log
+/main/API/error_log
+
+# ========================
+# OS / Editor junk
+# ========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

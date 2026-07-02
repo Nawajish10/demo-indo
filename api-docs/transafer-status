@@ -1,0 +1,49 @@
+# Transfer Status
+
+### Endpoint
+
+```
+POST https://{API_SERVER}
+```
+
+**Content-Type:** `application/json`
+
+### Request
+
+**Method:** `transfer_status`
+
+```json
+{
+    "method": "transfer_status",
+    "agent_code": "your_agent_code",
+    "agent_token": "your_agent_token",
+    "user_code": "test",
+    "agent_sign": "UNIQUE_ID"
+}
+```
+
+<table><thead><tr><th width="122">Field</th><th width="101">Type</th><th width="109">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>method</code></td><td>string</td><td>Yes</td><td>Must be <code>transfer_status</code></td></tr><tr><td><code>agent_code</code></td><td>string</td><td>Yes</td><td>Your agent code</td></tr><tr><td><code>agent_token</code></td><td>string</td><td>Yes</td><td>Your agent API token</td></tr><tr><td><code>user_code</code></td><td>string</td><td>Yes</td><td>Target user</td></tr><tr><td><code>agent_sign</code></td><td>string</td><td>Yes</td><td>Unique ID from the original deposit/withdraw request</td></tr></tbody></table>
+
+### Response
+
+#### Success
+
+```json
+{
+    "status": 1,
+    "msg": "SUCCESS",
+    "amount": 10000,
+    "agent_balance": 990000,
+    "user_balance": 10000,
+    "type": "user_deposit"
+}
+```
+
+#### Failure
+
+```json
+{
+    "status": 0,
+    "msg": "NOT FOUND"
+}
+```

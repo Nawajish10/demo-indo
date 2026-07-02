@@ -1,0 +1,9 @@
+# CALL API
+
+- [Current Playing Users](https://ggr.gitbook.io/docs/integration/call-api/current-playing-users.md): Returns users currently playing slot games under your agent.
+- [Call List](https://ggr.gitbook.io/docs/integration/call-api/call-list.md): Returns available call (free spin) options for a specific provider and game.
+- [Call Apply](https://ggr.gitbook.io/docs/integration/call-api/call-apply.md): Applies a call (bonus) to a user in a specific game. Use call\_rtp from the Get Call List response.
+- [Call Cancel](https://ggr.gitbook.io/docs/integration/call-api/call-cancel.md): Cancels a waiting call. Use call\_id from the Get Call History response.
+- [Call History](https://ggr.gitbook.io/docs/integration/call-api/call-history.md): Returns paginated call history for your agent.
+- [Control User RTP](https://ggr.gitbook.io/docs/integration/call-api/control-user-rtp.md): Sets the target RTP for a specific user on a provider.
+- [Control Users RTP](https://ggr.gitbook.io/docs/integration/call-api/control-users-rtp.md): Sets the target RTP for multiple users in one request.

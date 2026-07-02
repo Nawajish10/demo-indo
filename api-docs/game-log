@@ -1,0 +1,82 @@
+# Game Log
+
+## End**point**
+
+```
+POST https://{API_SERVER}
+```
+
+## **Request Body**
+
+```json
+{
+  "method": "get_game_log",
+  "agent_code": "testAgent",
+  "agent_token": "41f5cc794aef2b138c715cf25f767cc1",
+  "user_code": "tsetAgent",
+  "game_type": "slot",
+  "start": "2021-09-17 00:00:00",
+  "end": "2021-09-17 23:59:00",
+  "page": 0,
+  "perPage": 1000
+}
+```
+
+<table><thead><tr><th width="128">Key</th><th width="89">Type</th><th>Description</th></tr></thead><tbody><tr><td><strong>method</strong></td><td>string</td><td>The method type(<code>get_game_log</code>) </td></tr><tr><td><strong>agent_code</strong></td><td>string</td><td>The agent's code</td></tr><tr><td><strong>agent_token</strong></td><td>string</td><td>The agent's authentication token</td></tr><tr><td><a data-footnote-ref href="#user-content-fn-1"><strong>user_code</strong></a></td><td>string</td><td>The user's code</td></tr><tr><td><a data-footnote-ref href="#user-content-fn-2"><strong>game_type</strong></a></td><td>string</td><td>The type of game for which the log is being retrieved.</td></tr><tr><td><strong>start</strong></td><td>string</td><td>The start date and time for the search in the format <code>yyyy-MM-dd HH:mm:ss</code>.</td></tr><tr><td><strong>end</strong></td><td>string</td><td>The end date and time for the search in the format <code>yyyy-MM-dd HH:mm:ss</code>.</td></tr><tr><td><strong>page</strong></td><td>integer</td><td>The page number for pagination (used for multiple results).</td></tr><tr><td><strong>perPage</strong></td><td>integer</td><td>The number of records to return per page (maximum 1,000,000).</td></tr></tbody></table>
+
+## **Success Response**
+
+<table><thead><tr><th width="132">Key</th><th width="139">Type</th><th>Description</th></tr></thead><tbody><tr><td><strong>status</strong></td><td>integer (32-bit)</td><td>The response status. <code>1</code> means success.</td></tr><tr><td><strong>total_count</strong></td><td>integer (32-bit)</td><td>The total number of logs that match the query criteria.</td></tr><tr><td><strong>page</strong></td><td>integer (32-bit)</td><td>The current page number of the results.</td></tr><tr><td><strong>perPage</strong></td><td>integer (32-bit)</td><td>The number of records returned per page (as per the request).</td></tr><tr><td><strong>slot</strong></td><td>array</td><td>A list of game transaction logs matching the request, with each log entry containing transaction details.</td></tr></tbody></table>
+
+**Transaction Log Details (Inside `slot` array):**
+
+<table><thead><tr><th width="185">Key</th><th width="144">Type</th><th>Description</th></tr></thead><tbody><tr><td><strong>history_id</strong></td><td>integer (64-bit)</td><td>The unique ID of the transaction history entry.</td></tr><tr><td><strong>agent_code</strong></td><td>string</td><td>The code of the agent who processed the transaction.</td></tr><tr><td><strong>user_code</strong></td><td>string</td><td>The code of the user who made the transaction.</td></tr><tr><td><strong>provider_code</strong></td><td>string</td><td>The code of the game provider.</td></tr><tr><td><strong>game_code</strong></td><td>string</td><td>The unique game identifier (e.g., <code>vs20doghouse</code>).</td></tr><tr><td><strong>type</strong></td><td>string</td><td>The type of transaction (e.g., <code>BASE</code>, <code>FREE</code>).</td></tr><tr><td><strong>bet_money</strong></td><td>double</td><td>The amount of money bet by the user.</td></tr><tr><td><strong>win_money</strong></td><td>double</td><td>The amount of money won by the user.</td></tr><tr><td><strong>txn_id</strong></td><td>string</td><td>The unique transaction ID.</td></tr><tr><td><strong>txn_type</strong></td><td>string</td><td>The type of transaction (e.g., <code>debit_credit</code>)</td></tr><tr><td><strong>user_start_balance</strong></td><td>double</td><td>The user's balance before the transaction.</td></tr><tr><td><strong>user_end_balance</strong></td><td>double</td><td>The user's balance after the transaction.</td></tr><tr><td><strong>agent_start_balance</strong></td><td>double</td><td>The agent's balance before the transaction.</td></tr><tr><td><strong>agent_end_balance</strong></td><td>double</td><td>The agent's balance after the transaction.</td></tr><tr><td><strong>created_at</strong></td><td>string</td><td>The date and time when the transaction was created.</td></tr></tbody></table>
+
+### **Example Success Response**
+
+```json
+{
+  "status": 1,
+  "total_count": 340,
+  "page": 0,
+  "perPage": 1000,
+  "slot": [
+    {
+      "history_id": 777,
+      "agent_code": "admin",
+      "user_code": "test",
+      "provider_code": "PRAGMATIC",
+      "game_code": "vs20doghouse",
+      "type": "BASE",
+      "bet_money": 2000,
+      "win_money": 0,
+      "txn_id": "64a83f2fc597acc9004eec52c3f84c30",
+      "txn_type": "debit_credit",
+      "user_start_balance": 230500,
+      "user_end_balance": 228500,
+      "agent_start_balance": 22092000,
+      "agent_end_balance": 22092000,
+      "created_at": "2021-09-17T12:50:42.000Z"
+    },
+    ...
+  ]
+}
+```
+
+### **Failure Response Example**
+
+```json
+{
+    "status": 0,
+    "msg": "Invalid Parameter.",
+    "detail": "perPage must be less than or equal to 1000000"
+}
+```
+
+#### **Explanation:**
+
+<table><thead><tr><th width="97">Key</th><th width="141">Type</th><th>Description</th></tr></thead><tbody><tr><td><strong>status</strong></td><td>integer (32-bit)</td><td>Indicates the response status. A value of <code>0</code> indicates a failure.</td></tr><tr><td><strong>msg</strong></td><td>string</td><td>A brief message describing the error. In this case, <code>Invalid Parameter.</code> indicates an invalid parameter was provided.</td></tr><tr><td><strong>detail</strong></td><td>string</td><td>A more detailed message explaining the specific issue. </td></tr></tbody></table>
+
+[^1]: If not specified, the API will return the entire transaction history for the agent.
+
+[^2]: `slot` for slot games, `live` for live casino

@@ -1,0 +1,10 @@
+{
+    "name": "demo-indo",
+    "description": "Indonesian Online Slot Gaming Platform",
+    "require": {
+        "php": ">=7.4"
+    },
+    "scripts": {
+        "start": "heroku-php-apache2 ."
+    }
+}

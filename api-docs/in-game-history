@@ -1,0 +1,75 @@
+# In-Game History
+
+Unlike `get_game_log`, this does not return transaction records directly — it returns a link to the provider's history page.
+
+> **Availability:** Currently supported for **Pragmatic Play Slot** only (`provider_code`: `PRAGMATIC`). Other providers will return `INVALID_PROVIDER`.
+
+### Endpoint
+
+```
+POST https://{API_SERVER}
+```
+
+**Content-Type:** `application/json`
+
+### Request
+
+**Method:** `get_game_history`
+
+```json
+{
+    "method": "get_game_history",
+    "agent_code": "your_agent_code",
+    "agent_token": "your_agent_token",
+    "user_code": "test",
+    "provider_code": "PRAGMATIC",
+    "game_code": "vs20doghouse"
+}
+```
+
+<table><thead><tr><th width="145">Field</th><th width="89">Type</th><th width="117">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>method</code></td><td>string</td><td>Yes</td><td>Must be <code>get_game_history</code></td></tr><tr><td><code>agent_code</code></td><td>string</td><td>Yes</td><td>Your agent code</td></tr><tr><td><code>agent_token</code></td><td>string</td><td>Yes</td><td>Your agent API token</td></tr><tr><td><code>user_code</code></td><td>string</td><td>Yes</td><td>Player identifier</td></tr><tr><td><code>provider_code</code></td><td>string</td><td>Yes</td><td>Must be <code>PRAGMATIC</code> (Pragmatic Play Slot only)</td></tr><tr><td><code>game_code</code></td><td>string</td><td>Yes</td><td>Pragmatic Play slot game code (e.g. <code>vs20doghouse</code>)</td></tr></tbody></table>
+
+### Response
+
+#### Success
+
+```json
+{
+    "status": 1,
+    "msg": "SUCCESS",
+    "history_url": "https://game-server.example.com/gs2c/lastGameHistory.do?symbol=vs20doghouse&mgckey=..."
+}
+```
+
+| Field         | Description                                                 |
+| ------------- | ----------------------------------------------------------- |
+| `history_url` | URL to open the provider's game history page for the player |
+
+#### Failure
+
+**Invalid provider (not Pragmatic Play Slot):**
+
+```json
+{
+    "status": 0,
+    "msg": "INVALID_PROVIDER"
+}
+```
+
+**External provider error:**
+
+```json
+{
+    "status": 0,
+    "msg": "EXTERNAL_ERROR : INVALID_GAME"
+}
+```
+
+**Internal error:**
+
+```json
+{
+    "status": 0,
+    "msg": "INTERNAL_ERROR"
+}
+```

@@ -1,0 +1,147 @@
+# Agent & User Info
+
+## **Endpoint**
+
+```
+POST https://{API_SERVER}
+```
+
+## **Agent Info**
+
+### **Request Body**
+
+{% code fullWidth="false" %}
+
+```json
+{
+  "method": "money_info",
+  "agent_code": "testAgent",
+  "agent_token": "41f5cc794aef2b138c715cf25f767cc1"
+}
+```
+
+{% endcode %}
+
+<table><thead><tr><th width="183">Key</th><th width="145">Type</th><th>Description</th></tr></thead><tbody><tr><td>method</td><td>string</td><td>The method type (<code>money_info</code>)</td></tr><tr><td>agent_code</td><td>string</td><td>The agent's code</td></tr><tr><td>agent_token</td><td>string</td><td>The agent's authentication token</td></tr></tbody></table>
+
+### **Success Response Example**
+
+```json
+{
+    "status": 1,
+    "msg": "SUCCESS",
+    "agent": {
+        "agent_code": "testAgent",
+        "balance": 1000000
+    }
+}
+```
+
+### **Failure Response Example**
+
+```json
+{
+  "status": 0,
+  "msg": "INVALID_PARAMETER"
+}
+```
+
+***
+
+## **User Info**
+
+### **Request Body**
+
+{% code fullWidth="false" %}
+
+```json
+{
+  "method": "money_info",
+  "agent_code": "testAgent",
+  "agent_token": "41f5cc794aef2b138c715cf25f767cc1",
+  "user_code": "testUser"
+}
+```
+
+{% endcode %}
+
+<table><thead><tr><th width="183">Key</th><th width="145">Type</th><th>Description</th></tr></thead><tbody><tr><td>method</td><td>string</td><td>The method type (<code>money_info</code>)</td></tr><tr><td>agent_code</td><td>string</td><td>The agent's code</td></tr><tr><td>agent_token</td><td>string</td><td>The agent's authentication token</td></tr><tr><td>user_code</td><td>string</td><td>The user's code</td></tr></tbody></table>
+
+### **Success Response Example**
+
+```json
+{
+    "status": 1,
+    "msg": "SUCCESS",
+    "agent": {
+        "agent_code": "testAgent",
+        "balance": 1000000,
+    },
+    "user": {
+        "user_code": "testUser",
+        "balance": 100000,
+    }
+}
+```
+
+### **Failure Response Example**
+
+```json
+{
+  "status": 0,
+  "msg": "INVALID_PARAMETER"
+}
+```
+
+***
+
+## **All Users Info**
+
+### **Request Body**
+
+{% code fullWidth="false" %}
+
+```json
+{
+  "method": "money_info",
+  "agent_code": "testAgent",
+  "agent_token": "41f5cc794aef2b138c715cf25f767cc1",
+  "all_users": true
+}
+```
+
+{% endcode %}
+
+<table><thead><tr><th width="183">Key</th><th width="145">Type</th><th>Description</th></tr></thead><tbody><tr><td>method</td><td>string</td><td>The method type (<code>game_list</code>)</td></tr><tr><td>agent_code</td><td>string</td><td>The agent's code</td></tr><tr><td>agent_token</td><td>string</td><td>The agent's authentication token</td></tr><tr><td>all_users</td><td>boolean</td><td><code>true</code></td></tr></tbody></table>
+
+### **Success Response Example**
+
+```json
+{
+    "status": 1,
+    "msg": "SUCCESS",
+    "agent": {
+        "agent_code": "testAgent",
+        "balance": 99550000
+    },
+    "user_list": [
+        {
+            "user_code": "testUser1",
+            "balance": 450000
+        },
+        {
+            "user_code": "testUser2",
+            "balance": 20000
+        }
+    ]
+}
+```
+
+### **Failure Response Example**
+
+```json
+{
+  "status": 0,
+  "msg": "INVALID_PARAMETER"
+}
+```

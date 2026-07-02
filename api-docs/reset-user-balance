@@ -1,0 +1,91 @@
+# Reset User Balance
+
+### Endpoint
+
+```
+POST https://{API_SERVER}
+```
+
+**Content-Type:** `application/json`
+
+### Request
+
+**Method:** `user_withdraw_reset`
+
+#### Single user
+
+```json
+{
+    "method": "user_withdraw_reset",
+    "agent_code": "your_agent_code",
+    "agent_token": "your_agent_token",
+    "user_code": "test"
+}
+```
+
+#### All users
+
+```json
+{
+    "method": "user_withdraw_reset",
+    "agent_code": "your_agent_code",
+    "agent_token": "your_agent_token",
+    "all_users": true
+}
+```
+
+<table><thead><tr><th width="122">Field</th><th width="98">Type</th><th width="119">Required</th><th>Description</th></tr></thead><tbody><tr><td><code>method</code></td><td>string</td><td>Yes</td><td>Must be <code>user_withdraw_reset</code></td></tr><tr><td><code>agent_code</code></td><td>string</td><td>Yes</td><td>Your agent code</td></tr><tr><td><code>agent_token</code></td><td>string</td><td>Yes</td><td>Your agent API token</td></tr><tr><td><code>user_code</code></td><td>string</td><td>Conditional</td><td>Required when resetting a single user</td></tr><tr><td><code>all_users</code></td><td>boolean</td><td>No</td><td>When <code>true</code>, resets all users</td></tr></tbody></table>
+
+### Response
+
+#### Success — single user
+
+```json
+{
+    "status": 1,
+    "msg": "SUCCESS",
+    "agent": {
+        "agent_code": "your_agent_code",
+        "balance": 1000000
+    },
+    "user": {
+        "user_code": "test",
+        "withdraw_amount": 5600,
+        "balance": 0
+    }
+}
+```
+
+#### Success — all users
+
+```json
+{
+    "status": 1,
+    "msg": "SUCCESS",
+    "agent": {
+        "agent_code": "your_agent_code",
+        "balance": 1076850
+    },
+    "user_list": [
+        {
+            "user_code": "test",
+            "withdraw_amount": 20000,
+            "balance": 0
+        },
+        {
+            "user_code": "test2",
+            "withdraw_amount": 56850,
+            "balance": 0
+        }
+    ]
+}
+```
+
+#### Failure
+
+```json
+{
+    "status": 0,
+    "msg": "INVALID_PARAMETER"
+}
+```
